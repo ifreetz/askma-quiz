@@ -598,14 +598,21 @@
     font-family: 'Fraunces', serif;
     font-size: 18px;
     font-weight: 700;
-    margin: 0 0 8px;
+    margin: 0 0 12px;
+    line-height: 1.35;
   }
 
   .cta-text {
     font-size: 14px;
     color: var(--text-muted);
-    margin: 0 0 18px;
-    line-height: 1.5;
+    margin: 0 0 22px;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .cta-text strong {
+    color: var(--text);
+    font-weight: 600;
   }
 
   /* ====== Share section ====== */
@@ -710,6 +717,44 @@
     }
   }
 
+  /* ====== Back button ====== */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(20, 20, 42, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--text);
+    font-family: inherit;
+    transition: all var(--transition-base);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .back-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .back-btn:hover {
+    border-color: var(--accent);
+    transform: translateX(-2px);
+  }
+
+  .back-btn:active {
+    transform: scale(0.92);
+  }
+
   /* ====== Toast ====== */
   .toast {
     position: fixed;
@@ -755,6 +800,7 @@
 <body>
 
 <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">🔊</button>
+<button class="back-btn" id="backBtn" aria-label="ย้อนกลับ" onclick="goBack()">←</button>
 
 <div class="app">
 
@@ -931,7 +977,7 @@
         ],
         matching: { type: "critic", reason: "คุณสองคนชอบคุยกันยาวๆ เรื่องความน่าเชื่อถือของข้อมูล" },
         ctaTitle: "คนแบบคุณ จะรักแอป Askma เป็นพิเศษ",
-        ctaText: "แอปที่ออกแบบให้นักสังเกตรอบคอบได้ \"ใช้สมอง\" จริงๆ — คำถามมีหลายมิติ ผลลัพธ์ละเอียด พร้อม insight ที่คนตอบส่งๆ ไม่มีทางได้"
+        ctaText: "<strong>Askma</strong> คือแพลตฟอร์มสำรวจความคิดเห็นแบบไม่ระบุตัวตน ที่ออกแบบมาให้คนที่ \"คิดด้วยใจ\" ได้ใช้สมองจริงๆ<br><br>คำถามมีหลายมิติ ผลลัพธ์ละเอียด พร้อม insight ที่คนตอบส่งๆ ไม่มีทางได้ เห็นว่าคนทั้งประเทศคิดยังไงกับเรื่องที่คุณสนใจ<br><br>🔐 <strong>ตัวตนปลอดภัย 100%</strong> — ID หมุนเวียนทุก 7 วัน<br>📊 <strong>คำถามหลากหลาย</strong> — ไลฟ์สไตล์ การเงิน สุขภาพ อาชีพ และอีกมาก<br>💰 <strong>สะสมแต้ม</strong> — ตอบแบบสำรวจ ได้แต้ม แลกของรางวัลในอนาคต<br>⭐ <strong>Tier system</strong> — ยิ่งตอบจริงจัง ยิ่งได้ tier สูง<br>✅ <strong>PDPA Compliant</strong> — ผ่านมาตรฐานความปลอดภัยข้อมูลไทย"
       },
       intuitive: {
         emoji: "⚡",
@@ -955,7 +1001,7 @@
         ],
         matching: { type: "explorer", reason: "คุณสองคนสนุกกับทุกอย่าง ไม่จริงจังกับชีวิตเกินไป" },
         ctaTitle: "คนแบบคุณ จะติด Askma แน่นอน",
-        ctaText: "แอปที่ออกแบบมาให้ตอบเร็วๆ สนุกๆ — เห็นปุ๊บ ตอบปั๊บ ได้แต้ม ได้รางวัล ไม่ต้องคิดเยอะ"
+        ctaText: "<strong>Askma</strong> คือแพลตฟอร์มสำรวจความคิดเห็นแบบไม่ระบุตัวตน ที่ออกแบบมาให้ตอบเร็วๆ สนุกๆ — เห็นปุ๊บ ตอบปั๊บ ไม่ต้องคิดเยอะ<br><br>คำถามสั้น กระชับ ใช้เวลาไม่กี่วินาทีต่อข้อ ตอบเสร็จเห็นผลทันทีว่าคนอื่นคิดเหมือนคุณไหม<br><br>🔐 <strong>ตัวตนปลอดภัย 100%</strong> — ID หมุนเวียนทุก 7 วัน<br>📊 <strong>คำถามหลากหลาย</strong> — ไลฟ์สไตล์ การเงิน สุขภาพ อาชีพ และอีกมาก<br>💰 <strong>สะสมแต้ม</strong> — ตอบแบบสำรวจ ได้แต้ม แลกของรางวัลในอนาคต<br>⭐ <strong>Tier system</strong> — ยิ่งตอบเยอะ ยิ่งได้ tier สูง<br>✅ <strong>PDPA Compliant</strong> — ผ่านมาตรฐานความปลอดภัยข้อมูลไทย"
       },
       critic: {
         emoji: "🎭",
@@ -979,7 +1025,7 @@
         ],
         matching: { type: "observer", reason: "คุณสองคนเป็นเหมือนคนที่ห่วงคุณภาพข้อมูล อยู่ฝั่งเดียวกัน" },
         ctaTitle: "คนแบบคุณ จะหายากในแอปสำรวจส่วนใหญ่ — แต่ Askma ออกแบบมาเพื่อคุณ",
-        ctaText: "ทุกคำถามผ่านการกลั่นกรอง ทุกตัวเลือกมี \"อื่นๆ + ระบุได้\" ส่วน feedback ของคุณช่วยปรับปรุงแบบสำรวจให้คนอื่นต่อ"
+        ctaText: "<strong>Askma</strong> คือแพลตฟอร์มสำรวจความคิดเห็นแบบไม่ระบุตัวตน ที่ใส่ใจคุณภาพคำถามเป็นอันดับแรก<br><br>ทุกคำถามผ่านการกลั่นกรอง ทุกตัวเลือกมี \"อื่นๆ + ระบุได้\" รายงานปัญหา feedback ของคุณช่วยปรับปรุงแบบสำรวจให้คนอื่นต่อ<br><br>🔐 <strong>ตัวตนปลอดภัย 100%</strong> — ID หมุนเวียนทุก 7 วัน ไม่มีใครติดตามได้<br>📊 <strong>คำถามหลากหลาย</strong> — ไลฟ์สไตล์ การเงิน สุขภาพ อาชีพ และอีกมาก<br>💰 <strong>สะสมแต้ม</strong> — ตอบแบบสำรวจ ได้แต้ม แลกของรางวัลในอนาคต<br>⭐ <strong>Tier system</strong> — ยิ่งตอบจริงจัง ยิ่งได้ tier สูง<br>✅ <strong>PDPA Compliant</strong> — ผ่านมาตรฐานความปลอดภัยข้อมูลไทย"
       },
       explorer: {
         emoji: "🌟",
@@ -1003,7 +1049,7 @@
         ],
         matching: { type: "intuitive", reason: "คุณสองคนเข้ากันได้ดี ตอบเร็ว สนุก ไม่จริงจังเกินไป" },
         ctaTitle: "คนแบบคุณ จะหลงรัก Askma",
-        ctaText: "แอปที่ออกแบบมาให้สนุกตั้งแต่ตอบคำถามแรก — มีเสียง animation มีรางวัล มีแบบสำรวจหลากหลายให้ลองเล่น ทุกวันมีอะไรใหม่"
+        ctaText: "<strong>Askma</strong> คือแพลตฟอร์มสำรวจความคิดเห็นแบบไม่ระบุตัวตน ที่ออกแบบมาให้สนุกตั้งแต่ตอบคำถามแรก<br><br>มีเสียง animation ความรู้สึกเหมือนเล่นเกม แบบสำรวจหลากหลายให้ลองเล่น ทุกวันมีอะไรใหม่ เห็นว่าคนอื่นคิดเหมือนเราไหม<br><br>🔐 <strong>ตัวตนปลอดภัย 100%</strong> — ID หมุนเวียนทุก 7 วัน<br>📊 <strong>คำถามหลากหลาย</strong> — ไลฟ์สไตล์ การเงิน สุขภาพ อาชีพ และอีกมาก<br>💰 <strong>สะสมแต้ม</strong> — ตอบแบบสำรวจ ได้แต้ม แลกของรางวัลในอนาคต<br>⭐ <strong>Tier system</strong> — ยิ่งตอบเยอะ ยิ่งได้ tier สูง<br>✅ <strong>PDPA Compliant</strong> — ผ่านมาตรฐานความปลอดภัยข้อมูลไทย"
       }
     },
 
@@ -1017,6 +1063,7 @@
   // ==================== State ====================
   let currentQuestion = 0;
   let scores = { observer: 0, intuitive: 0, critic: 0, explorer: 0 };
+  let answers = []; // tracks user selections: [{ questionIdx, optionIdx, type, points }]
   let soundEnabled = true;
 
   // ==================== Audio (Web Audio API for no-asset sounds) ====================
@@ -1098,6 +1145,7 @@
     hapticTap();
     currentQuestion = 0;
     scores = { observer: 0, intuitive: 0, critic: 0, explorer: 0 };
+    answers = [];
     showScreen('quiz');
     renderQuestion();
   }
@@ -1108,6 +1156,7 @@
     const questionEl = document.getElementById('questionText');
     const optionsEl = document.getElementById('optionsContainer');
     const progressEl = document.getElementById('progressFill');
+    const backBtn = document.getElementById('backBtn');
     
     counterEl.textContent = `คำถามที่ ${currentQuestion + 1} จาก ${QUIZ_DATA.questions.length}`;
     questionEl.textContent = q.q;
@@ -1115,11 +1164,25 @@
     const progress = ((currentQuestion) / QUIZ_DATA.questions.length) * 100;
     progressEl.style.width = `${progress}%`;
     
+    // Show back button only from Q2 onwards (idx >= 1)
+    if (currentQuestion > 0) {
+      backBtn.classList.add('visible');
+    } else {
+      backBtn.classList.remove('visible');
+    }
+    
+    // Check if user previously answered this question (after going back)
+    const previousAnswer = answers[currentQuestion];
+    
     optionsEl.innerHTML = '';
     const letters = ['A', 'B', 'C', 'D'];
     q.options.forEach((opt, idx) => {
       const btn = document.createElement('button');
       btn.className = 'option';
+      // If this option was previously selected, mark it
+      if (previousAnswer && previousAnswer.optionIdx === idx) {
+        btn.classList.add('selected');
+      }
       btn.innerHTML = `
         <span class="option-marker">${letters[idx]}</span>
         <span class="option-text">${opt.text}</span>
@@ -1130,10 +1193,22 @@
   }
 
   function selectOption(idx, btnEl) {
-    // Prevent double-tap
-    if (btnEl.classList.contains('selected')) return;
+    // Prevent double-tap on same already-selected option (after going back, allow re-selection of different)
+    const previousAnswer = answers[currentQuestion];
+    if (previousAnswer && previousAnswer.optionIdx === idx && btnEl.classList.contains('selected')) {
+      // Same selection — just proceed
+      document.querySelectorAll('.option').forEach(b => {
+        b.style.pointerEvents = 'none';
+      });
+      soundSelect();
+      hapticTap();
+      proceedToNext();
+      return;
+    }
+    
     document.querySelectorAll('.option').forEach(b => {
       b.style.pointerEvents = 'none';
+      b.classList.remove('selected');
     });
     
     btnEl.classList.add('selected');
@@ -1143,20 +1218,47 @@
     const q = QUIZ_DATA.questions[currentQuestion];
     const opt = q.options[idx];
     const points = opt.weight || 2;
+    
+    // If user previously answered this question, subtract old points
+    if (previousAnswer) {
+      scores[previousAnswer.type] -= previousAnswer.points;
+    }
+    
+    // Add new points
     scores[opt.type] += points;
     
-    setTimeout(() => {
-      currentQuestion++;
-      if (currentQuestion >= QUIZ_DATA.questions.length) {
-        showLoading();
-      } else {
-        soundTransition();
-        renderQuestion();
-        // Animate progress to current question completion
-        const progress = ((currentQuestion) / QUIZ_DATA.questions.length) * 100;
-        document.getElementById('progressFill').style.width = `${progress}%`;
-      }
-    }, 450);
+    // Store the answer
+    answers[currentQuestion] = {
+      questionIdx: currentQuestion,
+      optionIdx: idx,
+      type: opt.type,
+      points: points
+    };
+    
+    setTimeout(proceedToNext, 450);
+  }
+
+  function proceedToNext() {
+    currentQuestion++;
+    if (currentQuestion >= QUIZ_DATA.questions.length) {
+      document.getElementById('backBtn').classList.remove('visible');
+      showLoading();
+    } else {
+      soundTransition();
+      renderQuestion();
+      const progress = ((currentQuestion) / QUIZ_DATA.questions.length) * 100;
+      document.getElementById('progressFill').style.width = `${progress}%`;
+    }
+  }
+
+  function goBack() {
+    if (currentQuestion <= 0) return;
+    soundTap();
+    hapticTap();
+    currentQuestion--;
+    renderQuestion();
+    const progress = ((currentQuestion) / QUIZ_DATA.questions.length) * 100;
+    document.getElementById('progressFill').style.width = `${progress}%`;
   }
 
   function showLoading() {
@@ -1370,6 +1472,8 @@
     hapticTap();
     currentQuestion = 0;
     scores = { observer: 0, intuitive: 0, critic: 0, explorer: 0 };
+    answers = [];
+    document.getElementById('backBtn').classList.remove('visible');
     showScreen('intro');
   }
 
