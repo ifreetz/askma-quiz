@@ -1276,6 +1276,12 @@
   }
 
   function proceedToNext() {
+    // Clear all option visual states before moving to next question
+    // (prevents leftover 'selected' class from bleeding into the next render)
+    document.querySelectorAll('.option').forEach(b => {
+      b.classList.remove('selected');
+    });
+    
     currentQuestion++;
     if (currentQuestion >= QUIZ_DATA.questions.length) {
       document.getElementById('backBtn').classList.remove('visible');
